@@ -26,7 +26,7 @@
         window.addEventListener("onEmbeddedMessagingReady", async () => {
           console.log("onEmbeddedMessagingReady event received");
 
-          const user_detail = await getDetails();
+          const user_detail = getDetails();
 
           // Set hidden pre-chat fields based on URL params
           embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
