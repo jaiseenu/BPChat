@@ -5,7 +5,7 @@
 </head>
 <body>
   <script type="text/javascript">
-    async function getDetails() {
+    function getDetails() {
       const urlParams = new URLSearchParams(window.location.search);
       const user_detail = {
         loanId: urlParams.get('loanId'),
