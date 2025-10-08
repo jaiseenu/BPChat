@@ -28,6 +28,7 @@
 
           const user_detail = getDetails();
           console.log("user_detailLL:", user_detail);
+          console.log("user_detailLLcontactId:", user_detail.contactId);
           // Set hidden pre-chat fields based on URL params
           embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
             Contact_ID: user_detail.contactId,
