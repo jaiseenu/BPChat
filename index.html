@@ -36,6 +36,7 @@
         window.addEventListener("onEmbeddedMessagingReady", () => {
           console.log("onEmbeddedMessagingReady event received");
           const user_detail = await getDetails();
+          console.log("user_detailLL:", user_detail);
           // NOTE: The following field names (e.g., IP_Address, Referring_Site, etc.) 
           // must not be changed during assignment. These names must match 
           // exactly what is configured in Salesforce pre-chat mapping.
