@@ -5,41 +5,30 @@
 </head>
 <body>
   <script type="text/javascript">
-   async function getDetails() {
-     const urlParams = new URLSearchParams(window.location.search);
-
-        
-       const user_detail = {
+    async function getDetails() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const user_detail = {
         loanId: urlParams.get('loanId'),
         contactId: urlParams.get('contactId'),
         pageInfo: urlParams.get('pageInfo'),
         deviceType: urlParams.get('deviceType'),
-        dpd: urlParams.get('dpd'),
+        dpd: urlParams.get('dpd')
       };
-     console.log("user_detail:", user_detail);
-     return user_detail;
-   }
+      console.log("user_detail:", user_detail);
+      return user_detail;
+    }
 
     async function initEmbeddedMessaging() {
       try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const loanId = urlParams.get('loanId');
-        const contactId = urlParams.get('contactId');
-        const pageInfo = urlParams.get('pageInfo');
-        const deviceType = urlParams.get('deviceType');
-        const dpd = urlParams.get('dpd');
-
-        console.log("URL Params:", { loanId, contactId, pageInfo, deviceType, dpd });
-
         embeddedservice_bootstrap.settings.language = 'en_US';
 
-        window.addEventListener("onEmbeddedMessagingReady", () => {
+        // Wait for the embedded messaging to be ready
+        window.addEventListener("onEmbeddedMessagingReady", async () => {
           console.log("onEmbeddedMessagingReady event received");
+
           const user_detail = await getDetails();
-          console.log("user_detailLL:", user_detail);
-          // NOTE: The following field names (e.g., IP_Address, Referring_Site, etc.) 
-          // must not be changed during assignment. These names must match 
-          // exactly what is configured in Salesforce pre-chat mapping.
+
+          // Set hidden pre-chat fields based on URL params
           embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
             Contact_ID: user_detail.contactId,
             Loan_ID: user_detail.loanId,
@@ -48,21 +37,8 @@
             Device_Type: user_detail.deviceType
           });
         });
-        window.addEventListener("onEmbeddedMessagingReady", () => {
-          console.log("onEmbeddedMessagingReady event received");
 
-          // NOTE: The following field names (e.g., IP_Address, Referring_Site, etc.) 
-          // must not be changed during assignment. These names must match 
-          // exactly what is configured in Salesforce pre-chat mapping.
-          embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-            Contact_ID: contactId,
-            Loan_ID: loanId,
-            Page_Info: pageInfo,
-            DPD: dpd,
-            Device_Type: deviceType
-          });
-        });
-
+        // Initialize embedded messaging
         embeddedservice_bootstrap.init(
           '00Dce000001LoFm',
           'Borrower_Portal',
