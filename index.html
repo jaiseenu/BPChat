@@ -27,7 +27,7 @@
           console.log("onEmbeddedMessagingReady event received");
 
           const user_detail = getDetails();
-
+          console.log("user_detailLL:", user_detail);
           // Set hidden pre-chat fields based on URL params
           embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
             Contact_ID: user_detail.contactId,
@@ -37,6 +37,28 @@
             Device_Type: user_detail.deviceType
           });
         });
+
+        
+        window.addEventListener("onEmbeddedMessagingButtonCreated", async () => {
+          console.log("onEmbeddedMessagingButtonCreated event received");
+        });
+
+        window.addEventListener("onEmbeddedMessagingButtonClicked", async () => {
+          console.log("onEmbeddedMessagingButtonClicked event received");
+        });
+
+        window.addEventListener("onEmbeddedMessagingConversationStarted", async () => {
+          console.log("onEmbeddedMessagingConversationStarted event received");
+        });
+
+        window.addEventListener("onEmbeddedMessagingPreChatLoaded", async () => {
+          console.log("onEmbeddedMessagingPreChatLoaded event received");
+        });
+
+        window.addEventListener("onEmbeddedMessagingPreChatSubmitted", async () => {
+          console.log("onEmbeddedMessagingPreChatSubmitted event received");
+        });
+
 
         // Initialize embedded messaging
         embeddedservice_bootstrap.init(
