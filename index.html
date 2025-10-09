@@ -25,7 +25,15 @@
         // Wait for the embedded messaging to be ready
         window.addEventListener("onEmbeddedMessagingReady", async () => {
           console.log("onEmbeddedMessagingReady event received");
+        });
 
+        
+        window.addEventListener("onEmbeddedMessagingButtonCreated", async () => {
+          console.log("onEmbeddedMessagingButtonCreated event received");
+        });
+
+        window.addEventListener("onEmbeddedMessagingButtonClicked", async () => {
+          console.log("onEmbeddedMessagingButtonClicked event received");
           const user_detail = getDetails();
           console.log("user_detailLL:", user_detail);
           console.log("user_detailLLcontactId:", user_detail.contactId);
@@ -37,15 +45,6 @@
             DPD: user_detail.dpd,
             Device_Type: user_detail.deviceType
           });
-        });
-
-        
-        window.addEventListener("onEmbeddedMessagingButtonCreated", async () => {
-          console.log("onEmbeddedMessagingButtonCreated event received");
-        });
-
-        window.addEventListener("onEmbeddedMessagingButtonClicked", async () => {
-          console.log("onEmbeddedMessagingButtonClicked event received");
         });
 
         window.addEventListener("onEmbeddedMessagingConversationStarted", async () => {
