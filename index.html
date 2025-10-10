@@ -24,6 +24,10 @@
       try {
         embeddedservice_bootstrap.settings.language = 'en_US';
 
+        let chatTimer = setTimeout(() => {
+    embeddedservice_bootstrap.prechatAPI.startChat();
+  }, 10000);
+
         window.addEventListener("onEmbeddedMessagingButtonClicked", async () => {
           console.log("onEmbeddedMessagingButtonClicked event received");
           const user_detail = getDetails(); //Replace the method as per your codebase.
