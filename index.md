@@ -1,80 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
+
 <body>
-  <script type="text/javascript">
-
-    //Test Method to get details from the URL
-    function getDetails() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const user_detail = {
-        loanId: urlParams.get('loanId'),
-        contactId: urlParams.get('contactId'),
-        pageInfo: urlParams.get('pageInfo'),
-        deviceType: urlParams.get('deviceType'),
-        dpd: urlParams.get('dpd')
-      };
-      console.log("user_detail:", user_detail);
-      return user_detail;
-    }
-
-    async function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = 'en_US';
-
-        let chatTimer = setTimeout(() => {
-   embeddedservice_bootstrap.utilAPI
-  .launchChat()
-  .then(function (success) {
-    // Add actions to run after the chat client launches successfully.
-    console.log("LAUNCH SUCCESS");
-  })
-  .catch(function (error) {
-    // Add actions to run after the chat client launch fails.
-    console.log("LAUNCH error");
-  })
-  .finally(function () {
-    // Add actions to run whether the chat client launches
-    // successfully or not.
-    console.log("LAUNCH finally");
-  });
-  }, 10000);
-
-        window.addEventListener("onEmbeddedMessagingButtonClicked", async () => {
-          console.log("onEmbeddedMessagingButtonClicked event received");
-          const user_detail = getDetails(); //Replace the method as per your codebase.
-          //Set values for hidden fields used in Salesforce Embedded Messaging.
-          //Important:
+    <script type="text/javascript">
+        //Test Method to get details from the URL
+        function getDetails() {
+          const urlParams = new URLSearchParams(window.location.search);
+					//Important:
           // - Field API names are **case-sensitive** and must exactly match the configuration in Salesforce.
           // - Do **not** rename or modify existing parameter keys.
           // - If you need to include additional fields, ensure they are first configured in Salesforce before adding them here.
-          embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-            Contact_ID: user_detail.contactId,
-            Loan_ID: user_detail.loanId,
-            Page_Info: user_detail.pageInfo,
-            DPD: user_detail.dpd,
-            Device_Type: user_detail.deviceType
-          });
-        });
-        
-        // Initialize embedded messaging
-        embeddedservice_bootstrap.init(
-          '00Dce000001LoFm',
-          'Borrower_Portal',
-          'https://pflms--qa.sandbox.my.site.com/ESWBorrowerPortal1759909412660',
-          { scrt2URL: 'https://pflms--qa.sandbox.my.salesforce-scrt.com' }
-        );
-      } catch (error) {
-        console.error("Error initializing Embedded Messaging:", error);
-      }
-    }
-  </script>
+          const data = {
+            Loan_ID: urlParams.get('loanId'),
+            Contact_ID: urlParams.get('contactId'),
+            Page_Info: urlParams.get('pageInfo'),
+            Device_Type: urlParams.get('deviceType'),
+            DPD: urlParams.get('dpd')
+          };
+          console.log("data:", data);
+          return data;
+        }
+    
+        async function initEmbeddedMessaging() {
+          try {
+            embeddedservice_bootstrap.settings.language = 'en_US';
+    
+            let chatTimer = setTimeout(() => {
+      				embeddedservice_bootstrap.utilAPI.launchChat()
+      				.then(function (success) {
+        					console.log("LAUNCH SUCCESS", success);
+								  //Set values for hidden fields used in Salesforce Embedded Messaging.
+                  embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(getDetails());
+      				})
+      				.catch(function (error) {
+        					console.log("LAUNCH error", error);
+      				})
+      				.finally(function () {
+        					console.log("LAUNCH finally");
+      				});
+      			}, 10000);
+    
+            window.addEventListener("onEmbeddedMessagingButtonClicked", async () => {
+              console.log("onEmbeddedMessagingButtonClicked event received");
+              //Set values for hidden fields used in Salesforce Embedded Messaging.
+              embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(getDetails());
+            });
+            
+            // Initialize embedded messaging
+            embeddedservice_bootstrap.init(
+              '00Dce000001LoFm',
+              'Borrower_Portal',
+              'https://pflms--qa.sandbox.my.site.com/ESWBorrowerPortal1759909412660',
+              { scrt2URL: 'https://pflms--qa.sandbox.my.salesforce-scrt.com' }
+            );
+          } catch (error) {
+            console.error("Error initializing Embedded Messaging:", error);
+          }
+        }
+    </script>
 
-  <script
-    src="https://pflms--qa.sandbox.my.site.com/ESWBorrowerPortal1759909412660/assets/js/bootstrap.min.js"
-    onload="initEmbeddedMessaging()">
-  </script>
+    <script    src="https://pflms--qa.sandbox.my.site.com/ESWBorrowerPortal1759909412660/assets/js/bootstrap.min.js"    onload="initEmbeddedMessaging()">
+    </script>
 </body>
+
 </html>
