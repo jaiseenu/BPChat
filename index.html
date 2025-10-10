@@ -10,7 +10,7 @@
         //Test Method to get details from the URL
         function getDetails() {
           const urlParams = new URLSearchParams(window.location.search);
-					//Important:
+		  //Important:
           // - Field API names are **case-sensitive** and must exactly match the configuration in Salesforce.
           // - Do **not** rename or modify existing parameter keys.
           // - If you need to include additional fields, ensure they are first configured in Salesforce before adding them here.
@@ -24,6 +24,17 @@
           console.log("data:", data);
           return data;
         }
+
+		function sendMessage(msg){
+			 embeddedservice_bootstrap.utilAPI.sendTextMessage("Text");
+      .then(() => {
+        console.log("MESSAGE SUCCESS");
+      }).catch(() => {
+        console.log("MESSAGE ERROR");
+      }).finally(() => {
+        console.log("MESSAGE FIN");
+      });
+		}
     
         async function initEmbeddedMessaging() {
           try {
@@ -41,6 +52,7 @@
       				})
       				.finally(function () {
         					console.log("LAUNCH finally");
+						sendMessage('Welcome!')
       				});
       			}, 10000);
     
