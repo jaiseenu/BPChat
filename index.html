@@ -30,11 +30,11 @@
             embeddedservice_bootstrap.settings.language = 'en_US';
     
             let chatTimer = setTimeout(() => {
+				    //Set values for hidden fields used in Salesforce Embedded Messaging.
+                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(getDetails());
       				embeddedservice_bootstrap.utilAPI.launchChat()
       				.then(function (success) {
-        					console.log("LAUNCH SUCCESS", success);
-								  //Set values for hidden fields used in Salesforce Embedded Messaging.
-                  embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(getDetails());
+        				console.log("LAUNCH SUCCESS", success);
       				})
       				.catch(function (error) {
         					console.log("LAUNCH error", error);
