@@ -25,16 +25,16 @@
           return data;
         }
 
-	/*	async function sendMessage(msg){
+		async function sendMessage(msg){
 			 embeddedservice_bootstrap.utilAPI.sendTextMessage(msg);
       .then(() => {
-        console.log("MESSAGE SUCCESS");
+        console.log("MESSAGE SUCCESS", msg);
       }).catch(() => {
         console.log("MESSAGE ERROR");
       }).finally(() => {
         console.log("MESSAGE FIN");
       });
-		}*/
+		}
     
         async function initEmbeddedMessaging() {
           try {
