@@ -25,7 +25,21 @@
         embeddedservice_bootstrap.settings.language = 'en_US';
 
         let chatTimer = setTimeout(() => {
-    embeddedservice_bootstrap.prechatAPI.startChat();
+   embeddedservice_bootstrap.utilAPI
+  .launchChat()
+  .then(function (success) {
+    // Add actions to run after the chat client launches successfully.
+    console.log("LAUNCH SUCCESS");
+  })
+  .catch(function (error) {
+    // Add actions to run after the chat client launch fails.
+    console.log("LAUNCH error");
+  })
+  .finally(function () {
+    // Add actions to run whether the chat client launches
+    // successfully or not.
+    console.log("LAUNCH finally");
+  });
   }, 10000);
 
         window.addEventListener("onEmbeddedMessagingButtonClicked", async () => {
