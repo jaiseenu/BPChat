@@ -26,7 +26,7 @@
         }
 
 		async function sendMessage(msg){
-			 embeddedservice_bootstrap.utilAPI.sendTextMessage(msg);
+			 embeddedservice_bootstrap.utilAPI.sendTextMessage(msg)
       .then(() => {
         console.log("MESSAGE SUCCESS", msg);
       }).catch(() => {
