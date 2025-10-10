@@ -52,7 +52,7 @@
         // When user manually clicks the chat button
         window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
           console.log("onEmbeddedMessagingButtonClicked event received");
-          startChat();
+          embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(getDetails());
         });
 
         // Initialize Embedded Messaging
