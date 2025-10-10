@@ -25,8 +25,8 @@
           return data;
         }
 
-		function sendMessage(msg){
-			 embeddedservice_bootstrap.utilAPI.sendTextMessage("Text");
+	/*	async function sendMessage(msg){
+			 embeddedservice_bootstrap.utilAPI.sendTextMessage(msg);
       .then(() => {
         console.log("MESSAGE SUCCESS");
       }).catch(() => {
@@ -34,7 +34,7 @@
       }).finally(() => {
         console.log("MESSAGE FIN");
       });
-		}
+		}*/
     
         async function initEmbeddedMessaging() {
           try {
@@ -52,7 +52,7 @@
       				})
       				.finally(function () {
         					console.log("LAUNCH finally");
-						sendMessage('Welcome!')
+						sendMessage('Welcome!');
       				});
       			}, 10000);
     
