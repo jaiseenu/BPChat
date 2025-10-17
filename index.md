@@ -44,11 +44,6 @@
       try {
         embeddedservice_bootstrap.settings.language = 'en_US';
 
-        // Automatically launch chat after 10 seconds
-        setTimeout(() => {
-          startChat();
-        }, 10000);
-
         // When user manually clicks the chat button
         window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
           console.log("onEmbeddedMessagingButtonClicked event received");
