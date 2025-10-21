@@ -51,13 +51,12 @@
         });
 
         // Initialize Embedded Messaging
-        let resp = embeddedservice_bootstrap.init(
+       embeddedservice_bootstrap.init(
           '00Dce000001LoFm', // Org ID
           'Borrower_Portal', // Deployment name
           'https://pflms--qa.sandbox.my.site.com/ESWBorrowerPortal1759909412660', // Site endpoint
           { scrt2URL: 'https://pflms--qa.sandbox.my.salesforce-scrt.com' } // SCRT URL
         );
-        console.log("resp::", resp);
 
       } catch (error) {
         console.error("Error initializing Embedded Messaging:", error);
