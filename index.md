@@ -50,6 +50,12 @@
           embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(getDetails());
         });
 
+        let chatTimer = setTimeout(() => {
+				   embeddedservice_bootstrap.userVerificationAPI.clearSession(true).then(() => {
+                 embeddedservice_bootstrap.utilAPI.removeAllComponents()
+           });
+      			}, 20000);
+
         // Initialize Embedded Messaging
        embeddedservice_bootstrap.init(
           '00Dce000001LoFm', // Org ID
