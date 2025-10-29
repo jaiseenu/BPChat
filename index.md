@@ -19,7 +19,8 @@
         Contact_ID: urlParams.get('contactId'),
         Page_Info: urlParams.get('pageInfo'),
         Device_Type: urlParams.get('deviceType'),
-        DPD: urlParams.get('dpd')
+        DPD: urlParams.get('dpd'),
+        Session_ID: urlParams.get('sessionId')
       };
       console.log("data:", data);
       return data;
@@ -43,6 +44,8 @@
     async function initEmbeddedMessaging() {
       try {
         embeddedservice_bootstrap.settings.language = 'en_US';
+        embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot = true;
+
 
         // When user manually clicks the chat button
         window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
