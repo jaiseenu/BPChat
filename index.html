@@ -46,11 +46,16 @@
         embeddedservice_bootstrap.settings.language = 'en_US';
         embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot = true;
 
-        embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-           identityTokenType: "JWT",
-           identityToken: "eyJraWQiOiJCb3Jyb3dlclBvcnRhbFdlYkNoYXRLaWQiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJCUFdlYkNoYXQiLCJzdWIiOiIwMDNjZTAwMDAwTmM4SXhBQUoiLCJleHAiOjE3NjE4MTA5MzgsImlhdCI6MTc2MTgwNzMzOH0.PPu2HRKFNVoDkWPoambGsasjwMq5OWrrTMjEMl5qe0yLkYSo6BtNVNojCHMb3YkjEjw-NPcmw2fpvuqaBjhpScLhc0476JIHIXuT9fg2y6gbm0BBdyiJASkSiPtljekb20ccLpK2dyXHUJHVEPHbuzIRcac0QnABbBMjc3D3P6AuzeajfeX1x8GJ_e6K-3OqAfeNKDy95F0d4BA-PfSOxT10UugPinPy8dGK-JxT9P2EmGA6OMELVgjpH_RxaK-onsBISidS3ym7JHURMQTqg6OCW2FitPyTG3ybsTwz0seUk3KNl3SVMY2R5U7MV2to_K2UlgPCnh0YuljR-9fguA",
-          });
 
+        window.addEventListener("onEmbeddedMessagingReady", () => {
+           console.log("Received the onEmbeddedMessagingReady event.");
+
+           // Send your identity token to Salesforce.
+           embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+              identityTokenType: "JWT",
+              identityToken: "eyJraWQiOiJCb3Jyb3dlclBvcnRhbFdlYkNoYXRLaWQiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJCUFdlYkNoYXQiLCJzdWIiOiIwMDNjZTAwMDAwTmM4SXhBQUoiLCJleHAiOjE3NjE4MTA5MzgsImlhdCI6MTc2MTgwNzMzOH0.PPu2HRKFNVoDkWPoambGsasjwMq5OWrrTMjEMl5qe0yLkYSo6BtNVNojCHMb3YkjEjw-NPcmw2fpvuqaBjhpScLhc0476JIHIXuT9fg2y6gbm0BBdyiJASkSiPtljekb20ccLpK2dyXHUJHVEPHbuzIRcac0QnABbBMjc3D3P6AuzeajfeX1x8GJ_e6K-3OqAfeNKDy95F0d4BA-PfSOxT10UugPinPy8dGK-JxT9P2EmGA6OMELVgjpH_RxaK-onsBISidS3ym7JHURMQTqg6OCW2FitPyTG3ybsTwz0seUk3KNl3SVMY2R5U7MV2to_K2UlgPCnh0YuljR-9fguA",
+            });
+        });
         // When user manually clicks the chat button
         window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
           console.log("onEmbeddedMessagingButtonClicked event received");
