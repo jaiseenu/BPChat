@@ -64,6 +64,10 @@
           embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(getDetails());
         });
 
+        window.addEventListener("onEmbeddedMessagingButtonCreated", () => {
+          console.log("onEmbeddedMessagingButtonCreated event received");
+        });
+
         // Initialize Embedded Messaging
        embeddedservice_bootstrap.init(
           '00Dce000001LoFm', // Org ID
