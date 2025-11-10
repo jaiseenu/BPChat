@@ -43,6 +43,8 @@
     // Initialize Embedded Messaging
     async function initEmbeddedMessaging() {
       try {
+        console.log("##embeddedservice_bootstrap:", embeddedservice_bootstrap);
+        console.log("##embeddedservice_bootstrapsettings:", embeddedservice_bootstrap.settings);
         embeddedservice_bootstrap.settings.language = 'en_US';
         embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot = true;
 
