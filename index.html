@@ -66,6 +66,8 @@
 
         window.addEventListener("onEmbeddedMessagingButtonCreated", () => {
           console.log("onEmbeddedMessagingButtonCreated event received");
+          console.log("##embeddedservice_bootstrapCREATE:", embeddedservice_bootstrap);
+          console.log("##embeddedservice_bootstrapsettingsCREATE:", embeddedservice_bootstrap.settings);
         });
 
         // Initialize Embedded Messaging
