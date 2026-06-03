@@ -20,7 +20,8 @@
         Page_Info: urlParams.get('pageInfo'),
         Device_Type: urlParams.get('deviceType'),
         DPD: urlParams.get('dpd'),
-        Session_ID: urlParams.get('sessionId')
+        Session_ID: urlParams.get('sessionId'),
+        chatbot_version: urlParams.get('chatbot_version')
       };
       console.log("data:", data);
       return data;
